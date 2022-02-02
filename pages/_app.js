@@ -1,8 +1,21 @@
 import Head from 'next/head';
+import { useEffect } from 'react';
 import Script from 'next/script';
+import { useRouter } from 'next/router';
 import GlobalStyle from '../styles/global';
+import * as gtag from '../lib/gtag';
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
   return (
     <>
       <Head>
@@ -16,16 +29,23 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
         <Script
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=G-1TWKM71G4W"
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
         />
-
-        <Script strategy="lazyOnload">
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-1TWKM71G4W');`}
-        </Script>
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
       </Head>
       <GlobalStyle />
       <Component {...pageProps} />
