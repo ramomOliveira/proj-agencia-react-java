@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script';
 import GlobalStyle from '../styles/global';
 
 export default function App({ Component, pageProps }) {
@@ -14,6 +15,17 @@ export default function App({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap"
           rel="stylesheet"
         />
+        <Script
+          strategy="lazyOnload"
+          src="https://www.googletagmanager.com/gtag/js?id=G-1TWKM71G4W"
+        />
+
+        <Script strategy="lazyOnload">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-1TWKM71G4W');`}
+        </Script>
       </Head>
       <GlobalStyle />
       <Component {...pageProps} />

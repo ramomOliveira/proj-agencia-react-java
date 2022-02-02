@@ -135,7 +135,7 @@ export default function Home() {
 
           <CardPriceWhite>
             {cityOffer.map((item) => (
-              <div>
+              <div key={item.city}>
                 <h1>{item.city}</h1>
                 <span>{item.range}</span>
                 <p>{item.price}</p>
@@ -152,7 +152,7 @@ export default function Home() {
 
           <CardPriceWhite>
             {citySummer.map((item) => (
-              <div>
+              <div key={item.city}>
                 <h1>{item.city}</h1>
                 <span>{item.range}</span>
                 <p>{item.price}</p>
@@ -164,6 +164,7 @@ export default function Home() {
         <AsideRight>
           {offer.map((item) => (
             <CardPriceOffer
+              key={item.merchanOffer}
               priceOffer={item.priceOffer}
               merchanOffer={item.merchanOffer}
             />
