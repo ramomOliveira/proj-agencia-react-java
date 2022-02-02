@@ -18,6 +18,24 @@ export default function App({ Component, pageProps }) {
   }, [router.events]);
   return (
     <>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
       <Head>
         <title>Agência</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,24 +45,6 @@ export default function App({ Component, pageProps }) {
         <link
           href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap"
           rel="stylesheet"
-        />
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-        />
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gtag.GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-          `,
-          }}
         />
       </Head>
       <GlobalStyle />
