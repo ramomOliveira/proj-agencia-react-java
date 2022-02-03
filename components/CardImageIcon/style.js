@@ -37,6 +37,7 @@ export const WrapperIcon = styled.div`
 
   > h1 {
     color: var(--white);
-    font-size: 20px;
+    font-size: ${(props) => (props.size25 ? '25px' : '20px')};
+    margin: 10px 0;
   }
 `;

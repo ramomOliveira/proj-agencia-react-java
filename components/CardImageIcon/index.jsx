@@ -7,15 +7,13 @@ export default function CardImageIcon({
   subTitle,
   srcIcon,
   reverse,
+  size25,
 }) {
   if (reverse) {
     return (
       <Container>
-        <WrapperIcon>
+        <WrapperIcon size25={size25}>
           <img src={srcIcon} alt="" />
-          <Buttons size25 paddingLarge>
-            {nameButton}
-          </Buttons>
           <h1>{subTitle}</h1>
         </WrapperIcon>
         <CarrosselReverse />

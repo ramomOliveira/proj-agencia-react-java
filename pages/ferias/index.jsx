@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import CardImageIcon from '../../components/CardImageIcon';
 import Layout from '../../components/Layout';
 
 export default function Vocation() {
@@ -7,7 +8,14 @@ export default function Vocation() {
       <Head>
         <title>Ferias</title>
       </Head>
-      <Layout subTitle="Ferias">Ferias</Layout>
+      <Layout subTitle="Ferias">
+        <CardImageIcon
+          size25
+          reverse
+          srcIcon="images/icon-chinelo.webp"
+          subTitle="Esplore. Sonhe. Descubra."
+        />
+      </Layout>
     </>
   );
 }
