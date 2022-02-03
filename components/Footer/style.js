@@ -7,6 +7,11 @@ export const WrapperInfo = styled.div`
   background-color: var(--blue);
   display: grid;
   grid-template-columns: 40% 60%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 16px 10px;
+  }
 `;
 
 export const Info = styled.div`
@@ -40,11 +45,19 @@ export const Contact = styled.div`
       > textarea {
         border: 1px solid var(--white);
         height: 100%;
+
+        @media (max-width: 768px) {
+          height: 100px;
+        }
       }
       > textarea::placeholder {
         color: var(--white);
         font-size: 15px;
       }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
     }
   }
 `;

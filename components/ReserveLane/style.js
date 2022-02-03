@@ -17,6 +17,9 @@ export const Container = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding: 5px 10px;
+    padding: 16px 24px;
+    text-align: center;
+    flex-direction: column;
+    gap: 20px;
   }
 `;

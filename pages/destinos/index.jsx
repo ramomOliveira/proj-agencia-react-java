@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import CardImageIcon from '../../components/CardImageIcon';
 import Layout from '../../components/Layout';
 
 export default function Destinations() {
@@ -7,7 +8,13 @@ export default function Destinations() {
       <Head>
         <title>Destinos</title>
       </Head>
-      <Layout subTitle="Destinos">destinos</Layout>
+      <Layout subTitle="Destinos">
+        <CardImageIcon
+          srcIcon="/images/bolsa-img.webp"
+          nameButton="Começar"
+          subTitle="A aventura"
+        />
+      </Layout>
     </>
   );
 }
