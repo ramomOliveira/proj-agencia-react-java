@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Buttons from '../components/Buttons';
 import CardPriceWhite from '../components/CardPriceWhite';
 import Layout from '../components/Layout';
@@ -92,85 +93,91 @@ const offer = [
 
 export default function Home() {
   return (
-    <Layout dNone>
-      <ContainerHeader>
-        <WrapperLeft>
-          <Icons>
-            <img src="/images/ico-twiter.webp" alt="" />
-            <img src="/images/ico-twiter.webp" alt="" />
-            <img src="/images/ico-twiter.webp" alt="" />
-          </Icons>
+    <>
+      <Head>
+        <title>Agência de Viagem - Home</title>
+      </Head>
+      <Layout dNone>
+        <ContainerHeader>
+          <WrapperLeft>
+            <Icons>
+              <img src="/images/ico-twiter.webp" alt="" />
+              <img src="/images/ico-twiter.webp" alt="" />
+              <img src="/images/ico-twiter.webp" alt="" />
+            </Icons>
 
-          <WrapperSearch>
-            <img src="/images/ico-bino.webp" alt="" />
-          </WrapperSearch>
-          <WrapperButton>
-            <Buttons size25>Buscar</Buttons>
-          </WrapperButton>
+            <WrapperSearch>
+              <img src="/images/ico-bino.webp" alt="" />
+            </WrapperSearch>
+            <WrapperButton>
+              <Buttons size25>Buscar</Buttons>
+            </WrapperButton>
 
-          <p>Suas Férias</p>
+            <p>Suas Férias</p>
 
-          <Welcome>Bem-vindos ao nosso mundo</Welcome>
-        </WrapperLeft>
+            <Welcome>Bem-vindos ao nosso mundo</Welcome>
+          </WrapperLeft>
 
-        <WrapperRight>
-          <h3>
-            Veja o quanto você pode economizar com nossas tarifas de ultima hora
-          </h3>
-          <div>
-            <p>Ver detalhes</p>
-            <span>+</span>
-          </div>
-        </WrapperRight>
-      </ContainerHeader>
+          <WrapperRight>
+            <h3>
+              Veja o quanto você pode economizar com nossas tarifas de ultima
+              hora
+            </h3>
+            <div>
+              <p>Ver detalhes</p>
+              <span>+</span>
+            </div>
+          </WrapperRight>
+        </ContainerHeader>
 
-      <WrapperAside>
-        <AsideLeft>
-          <WrapperBoxIcon>
-            <TransparentWhiteCard>Oferta selecionadas</TransparentWhiteCard>
-            <BoxIcon>
-              <img src="/images/icon-relogio.webp" alt="" />
-            </BoxIcon>
-          </WrapperBoxIcon>
+        <WrapperAside>
+          <AsideLeft>
+            <WrapperBoxIcon>
+              <TransparentWhiteCard>Oferta selecionadas</TransparentWhiteCard>
+              <BoxIcon>
+                <img src="/images/icon-relogio.webp" alt="" />
+              </BoxIcon>
+            </WrapperBoxIcon>
 
-          <CardPriceWhite>
-            {cityOffer.map((item) => (
-              <div key={item.city}>
-                <h1>{item.city}</h1>
-                <span>{item.range}</span>
-                <p>{item.price}</p>
-              </div>
+            <CardPriceWhite>
+              {cityOffer.map((item) => (
+                <div key={item.city}>
+                  <h1>{item.city}</h1>
+                  <span>{item.range}</span>
+                  <p>{item.price}</p>
+                </div>
+              ))}
+            </CardPriceWhite>
+
+            <WrapperBoxIcon>
+              <TransparentWhiteCard>Destinos de verão</TransparentWhiteCard>
+              <BoxIcon>
+                <img src="/images/icon-aviao.webp" alt="" />
+              </BoxIcon>
+            </WrapperBoxIcon>
+
+            <CardPriceWhite>
+              {citySummer.map((item) => (
+                <div key={item.city}>
+                  <h1>{item.city}</h1>
+                  <span>{item.range}</span>
+                  <p>{item.price}</p>
+                </div>
+              ))}
+            </CardPriceWhite>
+          </AsideLeft>
+
+          <AsideRight>
+            {offer.map((item) => (
+              <CardPriceOffer
+                key={item.merchanOffer}
+                priceOffer={item.priceOffer}
+                merchanOffer={item.merchanOffer}
+              />
             ))}
-          </CardPriceWhite>
-
-          <WrapperBoxIcon>
-            <TransparentWhiteCard>Destinos de verão</TransparentWhiteCard>
-            <BoxIcon>
-              <img src="/images/icon-aviao.webp" alt="" />
-            </BoxIcon>
-          </WrapperBoxIcon>
-
-          <CardPriceWhite>
-            {citySummer.map((item) => (
-              <div key={item.city}>
-                <h1>{item.city}</h1>
-                <span>{item.range}</span>
-                <p>{item.price}</p>
-              </div>
-            ))}
-          </CardPriceWhite>
-        </AsideLeft>
-
-        <AsideRight>
-          {offer.map((item) => (
-            <CardPriceOffer
-              key={item.merchanOffer}
-              priceOffer={item.priceOffer}
-              merchanOffer={item.merchanOffer}
-            />
-          ))}
-        </AsideRight>
-      </WrapperAside>
-    </Layout>
+          </AsideRight>
+        </WrapperAside>
+      </Layout>
+    </>
   );
 }

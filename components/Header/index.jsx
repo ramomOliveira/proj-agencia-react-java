@@ -44,8 +44,12 @@ export default function Header({ subTitle, dNone }) {
             </a>
           </Link>
 
-          <button type="button">Cadastrar</button>
-          <button type="button">Entrar</button>
+          <Link href="/cadastrar">
+            <button type="button">Cadastrar</button>
+          </Link>
+          <Link href="/painel">
+            <button type="button">Entrar</button>
+          </Link>
         </ul>
       </WrapperNavBar>
 
