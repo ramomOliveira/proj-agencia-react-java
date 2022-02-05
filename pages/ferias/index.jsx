@@ -10,6 +10,8 @@ export default function Vocation() {
       </Head>
       <Layout subTitle="Ferias">
         <CardImageIcon
+          borderLeft
+          gridReverse
           size25
           reverse
           srcIcon="images/icon-chinelo.webp"
