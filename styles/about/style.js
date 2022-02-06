@@ -4,11 +4,22 @@ export const WrapperTop = styled.div`
   display: grid;
   grid-template-columns: 65% 35%;
   margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 10px;
+  }
 `;
 
 export const WrapperAbout = styled.div`
   border-right: 2px dashed var(--white);
   padding-right: 40px;
+
+  @media (max-width: 768px) {
+    border-right: none;
+    padding-right: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 export const ImgAbout = styled.div`
@@ -48,6 +59,10 @@ export const WrapperStar = styled.div`
     padding: 10px 22px;
     margin-top: 10px;
   }
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 export const Star = styled.div`
@@ -78,4 +93,11 @@ export const WrapperDepositions = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   padding-bottom: 100px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 10px;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
 `;

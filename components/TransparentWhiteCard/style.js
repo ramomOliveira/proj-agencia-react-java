@@ -9,6 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  text-align: center;
 
   > h3 {
     display: ${(props) => (props.dNone ? 'none' : 'flex')};

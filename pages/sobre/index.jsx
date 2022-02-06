@@ -65,7 +65,7 @@ export default function About() {
           </WrapperStar>
         </WrapperTop>
 
-        <TransparentWhiteCard>Depoimentos</TransparentWhiteCard>
+        <TransparentWhiteCard dNone>Depoimentos</TransparentWhiteCard>
 
         <WrapperDepositions>
           {arrayDestinations.map(() => (

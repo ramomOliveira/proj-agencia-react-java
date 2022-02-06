@@ -34,7 +34,7 @@ export default function Destinations() {
 
         <WrapperTips>
           <div>
-            <TransparentWhiteCard>Destinos de verão</TransparentWhiteCard>
+            <TransparentWhiteCard dNone>Destinos de verão</TransparentWhiteCard>
             <BoxIcon>
               <img src="/images/icon-aviao.webp" alt="" />
             </BoxIcon>

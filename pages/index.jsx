@@ -133,7 +133,9 @@ export default function Home() {
         <WrapperAside>
           <AsideLeft>
             <WrapperBoxIcon>
-              <TransparentWhiteCard>Oferta selecionadas</TransparentWhiteCard>
+              <TransparentWhiteCard dNone>
+                Oferta selecionadas
+              </TransparentWhiteCard>
               <BoxIcon>
                 <img src="/images/icon-relogio.webp" alt="" />
               </BoxIcon>
@@ -150,7 +152,9 @@ export default function Home() {
             </CardPriceWhite>
 
             <WrapperBoxIcon>
-              <TransparentWhiteCard>Destinos de verão</TransparentWhiteCard>
+              <TransparentWhiteCard dNone>
+                Destinos de verão
+              </TransparentWhiteCard>
               <BoxIcon>
                 <img src="/images/icon-aviao.webp" alt="" />
               </BoxIcon>

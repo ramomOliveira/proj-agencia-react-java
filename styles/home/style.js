@@ -108,6 +108,7 @@ export const WrapperAside = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
     gap: 15px;
+    padding-bottom: 10px;
   }
 `;
 

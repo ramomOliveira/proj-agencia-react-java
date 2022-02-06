@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import CardCarousel from '../../components/CardCarousel';
+
+import ComingSoon from '../../components/ComingSoon';
 import Layout from '../../components/Layout';
 
 export default function Register() {
@@ -9,7 +10,7 @@ export default function Register() {
         <title>Cadastro</title>
       </Head>
       <Layout subTitle="Faça seu Cadastro">
-        <CardCarousel />
+        <ComingSoon />
       </Layout>
     </>
   );
