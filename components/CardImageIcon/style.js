@@ -5,6 +5,10 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: ${(props) =>
     props.gridReverse ? '35% 65%' : '65% 35%'};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const WrapperIcon = styled.div`

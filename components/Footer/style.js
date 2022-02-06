@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div``;
 
 export const WrapperInfo = styled.div`
-  padding: 30px 220px;
+  padding: 30px 200px;
   background-color: var(--blue);
   display: grid;
   grid-template-columns: 40% 60%;

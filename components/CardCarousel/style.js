@@ -21,6 +21,7 @@ export const ImageCarousel = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
   /* > img {
   width: 100%;
   height: 100%;
@@ -47,4 +48,8 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: -142px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

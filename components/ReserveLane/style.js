@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: var(--green);
-  padding: 25px 220px;
+  padding: 25px 200px;
 
   > h1 {
     font-size: 25px;

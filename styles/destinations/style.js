@@ -20,12 +20,25 @@ export const WrapperTips = styled.div`
     gap: 16px;
     margin: 20px 50px 20px 0;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+
+    > div {
+      width: 100%;
+      margin: 16px 0;
+    }
+  }
 `;
 
 export const WrapperMain = styled.div`
   display: grid;
   grid-template-columns: 65% 35%;
   padding-bottom: 100px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const AsideLeft = styled.div`
@@ -34,6 +47,11 @@ export const AsideLeft = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @media (max-width: 768px) {
+    border-right: none;
+    padding-right: 0;
+  }
 `;
 
 export const AsideRight = styled.div`
@@ -41,6 +59,11 @@ export const AsideRight = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+    margin-top: 20px;
+  }
 `;
 
 export const CardGreen = styled.div`
@@ -65,6 +88,11 @@ export const CardHelp = styled.div`
   > div {
     border: 5px solid var(--white);
     padding: 4px;
+  }
+  @media (max-width: 768px) {
+    > p {
+      width: 100%;
+    }
   }
 `;
 
