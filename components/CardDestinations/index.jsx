@@ -1,18 +1,15 @@
 import { Container, WrapperDescription, CardImg } from './style';
 
-export default function CardDestinations() {
+export default function CardDestinations({ title, description, src }) {
   return (
     <Container>
       <WrapperDescription>
-        <h1>Europa</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. At atque
-          exercitationem delectus officiis blanditiis molestias vero aspernatur,
-        </p>
+        <h1>{title}</h1>
+        <p>{description}</p>
       </WrapperDescription>
 
       <CardImg>
-        <img src="/images/europa-card.webp" alt="" />
+        <img src={src} />
       </CardImg>
     </Container>
   );

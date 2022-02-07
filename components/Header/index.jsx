@@ -14,7 +14,7 @@ export default function Header({ subTitle, dNone }) {
     <Container>
       <WrapperLogo>
         <img src="/images/logo.webp" alt="" />
-        <TitleH1>Bon Voyage</TitleH1>
+        <TitleH1>Trips Painless</TitleH1>
         <TitleH2>Melhores preços, Melhores férias</TitleH2>
       </WrapperLogo>
 

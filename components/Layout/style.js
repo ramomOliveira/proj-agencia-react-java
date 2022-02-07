@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  padding: 0 200px;
-`;
+export const Container = styled.div``;
 
 export const Cover = styled.div`
   padding: 0 200px;

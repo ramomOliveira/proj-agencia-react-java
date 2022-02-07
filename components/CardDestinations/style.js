@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   background-color: #ffffffc4;
+  @media (max-width: 768px) {
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
 export const WrapperDescription = styled.div`
@@ -15,6 +19,10 @@ export const WrapperDescription = styled.div`
   > p {
     font-size: 15px;
     color: var(--blue);
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 `;
 
