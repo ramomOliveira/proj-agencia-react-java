@@ -1,17 +1,18 @@
 import { Container, TitleH2, TitleH1, TitleH3, WrapperContent } from './style';
 
-export default function CardPackage() {
+export default function CardPackage({ src, price, city, title }) {
   return (
     <Container>
-      <img src="/images/vacation/img-ferias1.webp" alt="" />
+      <img src={src} alt="Imagem do Local" />
       <WrapperContent>
-        <TitleH1>R$ 999</TitleH1>
-        <TitleH2>Paris:</TitleH2>
-        <TitleH3>7 noites, hotel 4 estrelas e café da manhã</TitleH3>
+        <TitleH1>R$ {price}</TitleH1>
+        <TitleH2>{city}:</TitleH2>
+        <TitleH3>{title}</TitleH3>
         <p>
-          Sou um parágrafo. Clique aqui para editar e adicionar o seu texto. É
-          fácil! Basta clicar em “Editar Texto” ou sobre mim e poderá adicionar
-          o seu conteúdo e trocar fontes.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quam
+          accusamus odit dolores dignissimos cumque dolor saepe repudiandae
+          veritatis nobis perferendis praesentium laborum ullam, assumenda
+          aspernatur earum. Rem, ratione ut?
         </p>
         <div>
           <div>

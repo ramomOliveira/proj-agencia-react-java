@@ -9,7 +9,7 @@ export default function CardDestinations({ title, description, src }) {
       </WrapperDescription>
 
       <CardImg>
-        <img src={src} />
+        <img src={src} alt="Imagem Lugar" />
       </CardImg>
     </Container>
   );
