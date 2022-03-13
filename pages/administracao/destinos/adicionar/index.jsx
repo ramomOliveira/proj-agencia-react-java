@@ -9,6 +9,7 @@ import Layout from '../../../../components/Layout';
 import {
   WrapperForm,
   WrapperButton,
+  Wrapper,
 } from '../../../../styles/admin-destinations/add/style';
 
 export default function AddDestination() {
@@ -35,7 +36,7 @@ export default function AddDestination() {
       <Layout subTitle="Adicione um Destino">
         <LayoutAdmim>
           <WrapperForm onSubmit={handleSubmit(addDestination)}>
-            <div>
+            <Wrapper>
               <h1>Informações</h1>
               <div>
                 <div>
@@ -53,9 +54,9 @@ export default function AddDestination() {
                   />
                 </div>
               </div>
-            </div>
+            </Wrapper>
 
-            <div>
+            <Wrapper>
               <h1>Descrição</h1>
               <div>
                 <textarea
@@ -63,9 +64,9 @@ export default function AddDestination() {
                   {...register('description', { required: false })}
                 />
               </div>
-            </div>
+            </Wrapper>
 
-            <div>
+            <Wrapper>
               <h1>Informações de Hospedagem</h1>
               <div>
                 <div>
@@ -83,7 +84,7 @@ export default function AddDestination() {
                   />
                 </div>
               </div>
-            </div>
+            </Wrapper>
 
             <WrapperButton>
               <Buttons type="submit">Adicionar</Buttons>

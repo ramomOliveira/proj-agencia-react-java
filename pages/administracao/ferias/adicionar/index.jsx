@@ -9,6 +9,7 @@ import Layout from '../../../../components/Layout';
 import {
   WrapperForm,
   WrapperButton,
+  Wrapper,
 } from '../../../../styles/admin-vocations/add/style';
 
 export default function AddVocation() {
@@ -35,14 +36,14 @@ export default function AddVocation() {
       <Layout subTitle="Adicione um Pacote de Férias">
         <LayoutAdmim>
           <WrapperForm onSubmit={handleSubmit(addVocation)}>
-            <div>
+            <Wrapper>
               <h1>Informações</h1>
               <div>
                 <div>
                   <h3>Local:</h3>
                   <input
                     type="text"
-                    {...register('place', { required: false })}
+                    {...register('name', { required: false })}
                   />
                 </div>
                 <div>
@@ -53,9 +54,9 @@ export default function AddVocation() {
                   />
                 </div>
               </div>
-            </div>
+            </Wrapper>
 
-            <div>
+            <Wrapper>
               <h1>Descrição</h1>
               <div>
                 <textarea
@@ -63,9 +64,9 @@ export default function AddVocation() {
                   {...register('description', { required: false })}
                 />
               </div>
-            </div>
+            </Wrapper>
 
-            <div>
+            <Wrapper>
               <h1>Informações de Hospedagem</h1>
               <div>
                 <div>
@@ -83,9 +84,9 @@ export default function AddVocation() {
                   />
                 </div>
               </div>
-            </div>
+            </Wrapper>
 
-            <div>
+            <Wrapper>
               <h1>Informações Valores</h1>
               <div>
                 <div>
@@ -99,11 +100,11 @@ export default function AddVocation() {
                   <h3>Valor do pacote:</h3>
                   <input
                     type="text"
-                    {...register('pachageValue', { required: false })}
+                    {...register('price', { required: false })}
                   />
                 </div>
               </div>
-            </div>
+            </Wrapper>
 
             <WrapperButton>
               <Buttons type="submit">Adicionar</Buttons>

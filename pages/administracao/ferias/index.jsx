@@ -100,9 +100,11 @@ export default function AdminVocations() {
                   <Buttons onClick={() => deleteVocations(item.id)} noPadding>
                     <span className="material-icons-outlined">delete</span>
                   </Buttons>
-                  <Link href={`/usuario/editar-evento/${item.id}`}>
+                  <Link href="/administracao/ferias/editar">
                     <Buttons noPadding>
-                      <span className="material-icons-outlined">edit</span>
+                      <a href="/administracao/ferias/editar">
+                        <span className="material-icons-outlined">edit</span>
+                      </a>
                     </Buttons>
                   </Link>
                 </WrapperButton>

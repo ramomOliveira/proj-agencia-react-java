@@ -12,11 +12,11 @@ import {
   WrapperForm,
   WrapperButton,
   Wrapper,
-} from '../../../../styles/admin-destinations/add/style';
+} from '../../../../styles/admin-vocations/add/style';
 
-export default function EditDestination() {
+export default function EditVocation() {
   const router = useRouter();
-  const [destinations, setDestinations] = useState({});
+  const [packageVocation, setPackageVocation] = useState({});
   const {
     register,
     handleSubmit,
@@ -26,14 +26,14 @@ export default function EditDestination() {
   } = useForm();
 
   useEffect(() => {
-    apiProd.get('/destinations').then((response) => {
-      setDestinations(response.data);
+    apiProd.get('/packages').then((response) => {
+      setPackageVocation(response.data);
     });
   }, []);
 
   useEffect(() => {
     if (router.query.id) {
-      apiProd.get(`/destinations/${router.query.id}`).then(({ data }) => {
+      apiProd.get(`/packages/${router.query.id}`).then(({ data }) => {
         setValue('place', data.place);
         setValue('unitaryValue', data.unitaryValue);
         setValue('description', data.description);
@@ -43,9 +43,9 @@ export default function EditDestination() {
     }
   }, [router]);
 
-  const editDestination = (data) => {
+  const editPackageVocation = (data) => {
     apiProd
-      .patch(`/destinations//${router.query.id}`, {
+      .patch(`/packages/${router.query.id}`, {
         ...data,
       })
       .then(() => {
@@ -53,8 +53,8 @@ export default function EditDestination() {
       });
   };
 
-  const deleteDestination = () => {
-    apiProd.delete(`/destinations//${router.query.id}`).then(() => {
+  const deletePackageVocation = () => {
+    apiProd.delete(`/packages/${router.query.id}`).then(() => {
       router.push('/administracao/destinos');
     });
   };
@@ -66,7 +66,7 @@ export default function EditDestination() {
       </Head>
       <Layout subTitle="Adicione um Destino">
         <LayoutAdmim>
-          <WrapperForm onSubmit={handleSubmit(editDestination)}>
+          <WrapperForm onSubmit={handleSubmit(editPackageVocation)}>
             <Wrapper>
               <h1>Informações</h1>
               <div>
@@ -74,14 +74,14 @@ export default function EditDestination() {
                   <h3>Local:</h3>
                   <input
                     type="text"
-                    {...register('place', { required: false })}
+                    {...register('name', { required: false })}
                   />
                 </div>
                 <div>
-                  <h3>Valor por pessoas:</h3>
+                  <h3>Incluso:</h3>
                   <input
                     type="text"
-                    {...register('unitaryValue', { required: false })}
+                    {...register('includedPackage', { required: false })}
                   />
                 </div>
               </div>
@@ -101,17 +101,37 @@ export default function EditDestination() {
               <h1>Informações de Hospedagem</h1>
               <div>
                 <div>
-                  <h3>Dias:</h3>
+                  <h3>Quantas Noites:</h3>
                   <input
                     type="text"
                     {...register('daysHosted', { required: false })}
                   />
                 </div>
                 <div>
-                  <h3>Incluso:</h3>
+                  <h3>Quantas estrelas o hotel:</h3>
                   <input
                     type="text"
-                    {...register('includedPackage', { required: false })}
+                    {...register('hotelStars', { required: false })}
+                  />
+                </div>
+              </div>
+            </Wrapper>
+
+            <Wrapper>
+              <h1>Informações Valores</h1>
+              <div>
+                <div>
+                  <h3>Quantidade de pessoas:</h3>
+                  <input
+                    type="text"
+                    {...register('amountPeople', { required: false })}
+                  />
+                </div>
+                <div>
+                  <h3>Valor do pacote:</h3>
+                  <input
+                    type="text"
+                    {...register('price', { required: false })}
                   />
                 </div>
               </div>
@@ -119,7 +139,7 @@ export default function EditDestination() {
 
             <WrapperButton>
               <Buttons type="submit">Adicionar</Buttons>
-              <Buttons onClick={() => deleteDestination()} type="button">
+              <Buttons onClick={() => deletePackageVocation()} type="button">
                 Deletar
               </Buttons>
             </WrapperButton>
