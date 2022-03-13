@@ -76,6 +76,13 @@ export default function AdminVocations() {
       </Head>
       <Layout subTitle="Lista de Pacotes de Ferias Cadastrados">
         <LayoutAdmim>
+          <Link href="/administracao/ferias/adicionar">
+            <Buttons>
+              <a href="/administracao/ferias/adicionar">
+                Adicionar Pacote de Ferias
+              </a>
+            </Buttons>
+          </Link>
           <WrapperList>
             <WrapperHeader>
               <div>Local</div>

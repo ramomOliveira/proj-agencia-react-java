@@ -9,9 +9,9 @@ import Layout from '../../../../components/Layout';
 import {
   WrapperForm,
   WrapperButton,
-} from '../../../../styles/admin-destinations/add/style';
+} from '../../../../styles/admin-vocations/add/style';
 
-export default function AddDestination() {
+export default function AddVocation() {
   const router = useRouter();
   const {
     register,
@@ -20,21 +20,21 @@ export default function AddDestination() {
     reset,
   } = useForm();
 
-  const addDestination = () => {
+  const addVocation = () => {
     console.log('adicionado');
 
     reset();
-    router.push('/administracao/destinos');
+    router.push('/administracao/ferias');
   };
 
   return (
     <>
       <Head>
-        <title>Administração - Destinos</title>
+        <title>Administração - Férias</title>
       </Head>
-      <Layout subTitle="Adicione um Destino">
+      <Layout subTitle="Adicione um Pacote de Férias">
         <LayoutAdmim>
-          <WrapperForm onSubmit={handleSubmit(addDestination)}>
+          <WrapperForm onSubmit={handleSubmit(addVocation)}>
             <div>
               <h1>Informações</h1>
               <div>
@@ -46,10 +46,10 @@ export default function AddDestination() {
                   />
                 </div>
                 <div>
-                  <h3>Valor por pessoas:</h3>
+                  <h3>Incluso:</h3>
                   <input
                     type="text"
-                    {...register('unitaryValue', { required: false })}
+                    {...register('includedPackage', { required: false })}
                   />
                 </div>
               </div>
@@ -69,17 +69,37 @@ export default function AddDestination() {
               <h1>Informações de Hospedagem</h1>
               <div>
                 <div>
-                  <h3>Dias:</h3>
+                  <h3>Quantas Noites:</h3>
                   <input
                     type="text"
                     {...register('daysHosted', { required: false })}
                   />
                 </div>
                 <div>
-                  <h3>Incluso:</h3>
+                  <h3>Quantas estrelas o hotel:</h3>
                   <input
                     type="text"
-                    {...register('includedPackage', { required: false })}
+                    {...register('hotelStars', { required: false })}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h1>Informações Valores</h1>
+              <div>
+                <div>
+                  <h3>Quantidade de pessoas:</h3>
+                  <input
+                    type="text"
+                    {...register('amountPeople', { required: false })}
+                  />
+                </div>
+                <div>
+                  <h3>Valor do pacote:</h3>
+                  <input
+                    type="text"
+                    {...register('pachageValue', { required: false })}
                   />
                 </div>
               </div>
