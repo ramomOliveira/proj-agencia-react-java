@@ -12,6 +12,7 @@ export const WrapperForm = styled.form`
 
   @media (min-width: 768px) {
     width: min-content;
+    margin-left: 20px;
   }
 
   > div {
@@ -22,7 +23,7 @@ export const WrapperForm = styled.form`
       font-size: 25px;
       margin-bottom: 32px;
       font-weight: 400;
-      color: ${(props) => props.theme.colors.textPrimary};
+      color: var(--white);
     }
 
     > div {
@@ -33,7 +34,7 @@ export const WrapperForm = styled.form`
       > textarea {
         font-size: 16px;
         padding: 15px 16px;
-        border: 1px solid ${(props) => props.theme.colors.textPrimary};
+        border: 1px solid var(--white);
         border-radius: 4px;
         width: 100%;
       }
@@ -43,18 +44,18 @@ export const WrapperForm = styled.form`
         > h3 {
           font-size: 16px;
           margin-bottom: 8px;
-          color: ${(props) => props.theme.colors.textPrimary};
+          color: var(--white);
         }
 
         > input {
           font-size: 16px;
           padding: 15px 16px;
-          border: 1px solid ${(props) => props.theme.colors.textPrimary};
+          border: 1px solid var(--white);
           border-radius: 4px;
           min-width: 250px;
 
           @media (min-width: 768px) {
-            width: 400px;
+            width: 300px;
           }
         }
       }

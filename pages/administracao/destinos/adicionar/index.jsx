@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import LayoutAdmim from '../../../../components/Admim/LayoutAdmim';
+import Buttons from '../../../../components/Buttons';
 
 import Layout from '../../../../components/Layout';
 
@@ -14,27 +15,34 @@ export default function AddDestination() {
   const router = useRouter();
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+
+  const addDestination = () => {
+    console.log('adicionado');
+
+    reset();
+    router.push('/administracao/destinos');
+  };
+
   return (
     <>
       <Head>
         <title>Administração - Destinos</title>
       </Head>
-      <Layout subTitle="Lista de Destinos Cadastrados">
+      <Layout subTitle="Adicione um Destino">
         <LayoutAdmim>
-          <WrapperForm onSubmit={handleSubmit(addEvent)}>
+          <WrapperForm onSubmit={handleSubmit(addDestination)}>
             <div>
-              <h1>Informações do Evento</h1>
+              <h1>Informações</h1>
               <div>
                 <div>
-                  <h3>Nome:</h3>
+                  <h3>Local:</h3>
                   <input
                     type="text"
-                    {...register('name', { required: true })}
+                    {...register('name', { required: false })}
                   />
                 </div>
                 <div>
@@ -132,7 +140,7 @@ export default function AddDestination() {
             </div>
 
             <WrapperButton>
-              <Button type="submit">Salvar Alterações</Button>
+              <Buttons type="submit">Adicionar</Buttons>
             </WrapperButton>
           </WrapperForm>
         </LayoutAdmim>
