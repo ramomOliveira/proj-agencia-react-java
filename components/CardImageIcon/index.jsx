@@ -1,5 +1,6 @@
 import Buttons from '../Buttons';
-import CardCarousel from '../CardCarousel';
+
+import Carousel2 from '../Carousel2';
 
 import { Container, WrapperIcon } from './style';
 
@@ -24,13 +25,13 @@ export default function CardImageIcon({
           <img src={srcIcon} alt="" />
           <h1>{subTitle}</h1>
         </WrapperIcon>
-        <CardCarousel />
+        <Carousel2 />
       </Container>
     );
   }
   return (
     <Container>
-      <CardCarousel />
+      <Carousel2 />
       <WrapperIcon
         size25={size25}
         borderRight={borderRight}

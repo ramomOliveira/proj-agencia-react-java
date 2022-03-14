@@ -62,9 +62,9 @@ export default function EditVocation() {
   return (
     <>
       <Head>
-        <title>Administração - Destinos</title>
+        <title>Administração - Pacote de Férias</title>
       </Head>
-      <Layout subTitle="Adicione um Destino">
+      <Layout subTitle="Edite ou Delete um Pacote">
         <LayoutAdmim>
           <WrapperForm onSubmit={handleSubmit(editPackageVocation)}>
             <Wrapper>

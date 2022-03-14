@@ -64,7 +64,7 @@ export default function EditDestination() {
       <Head>
         <title>Administração - Destinos</title>
       </Head>
-      <Layout subTitle="Adicione um Destino">
+      <Layout subTitle="Edite ou Delete um Destino">
         <LayoutAdmim>
           <WrapperForm onSubmit={handleSubmit(editDestination)}>
             <Wrapper>
