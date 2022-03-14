@@ -3,13 +3,14 @@ import Footer from '../Footer';
 import NavBarMobile from '../NavBarMobile';
 
 import { Container, Cover, Wrapper } from './style';
+import MenuBurger from '../MenuBurger';
 
 export default function Layout({ children, subTitle, dNone }) {
   return (
     <Container>
       <Cover>
         <Wrapper>
-          <NavBarMobile />
+          <MenuBurger />
           <Header dNone={dNone} subTitle={subTitle} />
           {children}
         </Wrapper>
