@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: none;
   @media (max-width: 768px) {
     display: flex;
   }
@@ -47,7 +48,9 @@ export const styles = {
     padding: '10px',
   },
   bmItem: {
-    paddingBottom: '20px',
+    display: 'flex',
+    marginBottom: '20px',
+    marginTop: '20px',
   },
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.2)',

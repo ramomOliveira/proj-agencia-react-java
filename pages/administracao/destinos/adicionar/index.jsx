@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import LayoutAdmim from '../../../../components/Admim/LayoutAdmim';
 import Buttons from '../../../../components/Buttons';
+import apiProd from '../../../../lib/apiProd';
 
 import Layout from '../../../../components/Layout';
 
@@ -21,11 +22,18 @@ export default function AddDestination() {
     reset,
   } = useForm();
 
-  const addDestination = () => {
-    console.log('adicionado');
-
-    reset();
-    router.push('/administracao/destinos');
+  const addDestination = (data) => {
+    apiProd
+      .post('/destinations', {
+        ...data,
+      })
+      .then(() => {
+        reset();
+        router.push('/administracao/destinos');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

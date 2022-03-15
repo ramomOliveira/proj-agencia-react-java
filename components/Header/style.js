@@ -69,6 +69,7 @@ export const WrapperRange = styled.div`
   padding: 9px;
   color: #ffffff;
   font-size: 20px;
+  line-height: 24px;
   text-transform: uppercase;
   margin: 12px 0px;
 `;

@@ -1,7 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import LayoutAdmim from '../../../components/Admim/LayoutAdmim';
 import Buttons from '../../../components/Buttons';
+import apiProd from '../../../lib/apiProd';
 
 import Layout from '../../../components/Layout';
 
@@ -46,8 +49,21 @@ const arrayDestinations = [
   },
 ];
 export default function AdminDestinations() {
+  const [destination, setDestination] = useState([]);
+  const router = useRouter();
+  useEffect(() => {
+    apiProd
+      .get('/destinations')
+      .then((response) => {
+        setDestination(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const deleteDestination = () => {
-    console.log('deletar destino');
+    apiProd.delete(`/destinations/${router.query.id}`);
   };
   return (
     <>
@@ -69,16 +85,16 @@ export default function AdminDestinations() {
               <div />
             </WrapperHeader>
 
-            {arrayDestinations?.map((item) => (
-              <WrapperMain key={item.title}>
-                <div>{item.title}</div>
-                <DivNone>{item.price}</DivNone>
+            {destination.map((item) => (
+              <WrapperMain key={item.id}>
+                <div>{item.place}</div>
+                <DivNone>{item.unitaryValue}</DivNone>
 
                 <WrapperButton>
                   <Buttons onClick={() => deleteDestination(item.id)} noPadding>
                     <span className="material-icons-outlined">delete</span>
                   </Buttons>
-                  <Link href="/administracao/destinos/editar">
+                  <Link href={`/administracao/destinos/editar/${item.id}`}>
                     <Buttons noPadding>
                       <a href="/administracao/destinos/editar">
                         <span className="material-icons-outlined">edit</span>
