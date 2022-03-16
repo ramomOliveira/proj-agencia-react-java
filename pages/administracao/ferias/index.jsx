@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import LayoutAdmim from '../../../components/Admim/LayoutAdmim';
 import Buttons from '../../../components/Buttons';
-
+import apiProd from '../../../lib/apiProd';
 import Layout from '../../../components/Layout';
+import CardImgLoad from '../../../components/CardImgLoad';
 
 import {
   WrapperList,
@@ -13,60 +15,31 @@ import {
   WrapperButton,
 } from '../../../styles/admin-vocations/style';
 
-const packageVocation = [
-  {
-    src: '/images/vacation/img-ferias1.webp',
-    price: '999',
-    city: 'Paris',
-    title: '7 noites, hotel 4 estrelas e café da manhã',
-  },
-  {
-    src: '/images/vacation/img-ferias2.webp',
-    price: '799',
-    city: 'Suíça',
-    title: '10 noites, hotel 5 estrelas, tudo incluído',
-  },
-  {
-    src: '/images/vacation/img-ferias3.webp',
-    price: '699',
-    city: 'Tailândia',
-    title: '7 noites, hotel 4 estrelas e café da manhã',
-  },
-  {
-    src: '/images/vacation/img-ferias4.webp',
-    price: '999',
-    city: 'Nova York',
-    title: '3 noites, hotel 4 estrelas, tudo incluído',
-  },
-  {
-    src: '/images/vacation/img-ferias5.webp',
-    price: '356',
-    city: 'Itália',
-    title: '1 noites, hotel 4 estrelas e café da manhã',
-  },
-  {
-    src: '/images/vacation/img-ferias6.webp',
-    price: '899',
-    city: 'Paris',
-    title: '5 noites, hotel 4 estrelas, tudo incluído',
-  },
-  {
-    src: '/images/vacation/img-ferias7.webp',
-    price: '999',
-    city: 'Austrália',
-    title: '4 noites, hotel 5 estrelas e café da manhã',
-  },
-  {
-    src: '/images/vacation/img-ferias8.webp',
-    price: '299',
-    city: 'Londres',
-    title: '1 noites, hotel 4 estrelas, tudo incluído',
-  },
-];
-
 export default function AdminVocations() {
-  const deleteVocations = () => {
-    console.log('deletar destino');
+  const [imgLoad, setImgLoad] = useState(true);
+  const [packages, setPackages] = useState([]);
+
+  const load = () => {
+    apiProd
+      .get('/packages')
+      .then((response) => {
+        setPackages(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setImgLoad(false);
+      });
+  };
+  useEffect(() => {
+    load();
+  }, []);
+
+  const deleteVocations = (id) => {
+    apiProd.delete(`/packages/${id}`).then(() => {
+      load();
+    });
   };
 
   return (
@@ -90,19 +63,19 @@ export default function AdminVocations() {
 
               <div />
             </WrapperHeader>
-
-            {packageVocation?.map((item) => (
-              <WrapperMain key={item.city}>
-                <div>{item.city}</div>
+            {imgLoad && <CardImgLoad />}
+            {packages?.map((item) => (
+              <WrapperMain key={item.id}>
+                <div>{item.name}</div>
                 <DivNone>{item.price}</DivNone>
 
                 <WrapperButton>
                   <Buttons onClick={() => deleteVocations(item.id)} noPadding>
                     <span className="material-icons-outlined">delete</span>
                   </Buttons>
-                  <Link href="/administracao/ferias/editar">
+                  <Link href={`/administracao/ferias/editar/${item.id}`}>
                     <Buttons noPadding>
-                      <a href="/administracao/ferias/editar">
+                      <a href={`/administracao/ferias/editar/${item.id}`}>
                         <span className="material-icons-outlined">edit</span>
                       </a>
                     </Buttons>

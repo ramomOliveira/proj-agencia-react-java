@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 250px;
+  height: 240px;
   display: grid;
   grid-template-columns: ${(props) =>
     props.gridReverse ? '35% 65%' : '65% 35%'};

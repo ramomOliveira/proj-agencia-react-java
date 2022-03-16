@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import LayoutAdmim from '../../../../components/Admim/LayoutAdmim';
 import Buttons from '../../../../components/Buttons';
 import apiProd from '../../../../lib/apiProd';
-
+import AlertMessage from '../../../../components/AlertMessage';
 import Layout from '../../../../components/Layout';
 
 import {
@@ -21,40 +21,42 @@ export default function EditDestination() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     setValue,
   } = useForm();
 
   useEffect(() => {
-    apiProd.get('/destinations').then((response) => {
-      setDestinations(response.data);
-    });
-  }, []);
-
-  useEffect(() => {
     if (router.query.id) {
-      apiProd.get(`/destinations/${router.query.id}`).then(({ data }) => {
-        setValue('place', data.place);
-        setValue('unitaryValue', data.unitaryValue);
-        setValue('description', data.description);
-        setValue('daysHosted', data.daysHosted);
-        setValue('includedPackage', data.includedPackage);
-      });
+      apiProd
+        .get(`/destinations/${router.query.id}`)
+        .then(({ data }) => {
+          setDestinations(data);
+          setValue('place', data.place);
+          setValue('unitaryValue', data.unitaryValue);
+          setValue('description', data.description);
+          setValue('daysHosted', data.daysHosted);
+          setValue('includedPackage', data.includedPackage);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, [router]);
 
   const editDestination = (data) => {
     apiProd
-      .patch(`/destinations//${router.query.id}`, {
+      .put(`/destinations/${router.query.id}`, {
         ...data,
       })
       .then(() => {
         router.push('/administracao/destinos');
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
   const deleteDestination = () => {
-    apiProd.delete(`/destinations//${router.query.id}`).then(() => {
+    apiProd.delete(`/destinations/${router.query.id}`).then(() => {
       router.push('/administracao/destinos');
     });
   };
@@ -68,21 +70,27 @@ export default function EditDestination() {
         <LayoutAdmim>
           <WrapperForm onSubmit={handleSubmit(editDestination)}>
             <Wrapper>
-              <h1>Informações</h1>
+              <h1>{`Informações destino ${destinations.place}`}</h1>
               <div>
                 <div>
                   <h3>Local:</h3>
                   <input
                     type="text"
-                    {...register('place', { required: false })}
+                    {...register('place', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.place && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
                 <div>
                   <h3>Valor por pessoas:</h3>
                   <input
                     type="text"
-                    {...register('unitaryValue', { required: false })}
+                    {...register('unitaryValue', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.unitaryValue && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
               </div>
             </Wrapper>
@@ -92,9 +100,12 @@ export default function EditDestination() {
               <div>
                 <textarea
                   rows="10"
-                  {...register('description', { required: false })}
+                  {...register('description', { required: true })}
                 />
               </div>
+              <AlertMessage>
+                {errors.description && 'Campo obrigatório'}
+              </AlertMessage>
             </Wrapper>
 
             <Wrapper>
@@ -104,22 +115,28 @@ export default function EditDestination() {
                   <h3>Dias:</h3>
                   <input
                     type="text"
-                    {...register('daysHosted', { required: false })}
+                    {...register('daysHosted', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.daysHosted && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
                 <div>
                   <h3>Incluso:</h3>
                   <input
                     type="text"
-                    {...register('includedPackage', { required: false })}
+                    {...register('includedPackage', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.includedPackage && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
               </div>
             </Wrapper>
 
             <WrapperButton>
-              <Buttons type="submit">Adicionar</Buttons>
-              <Buttons onClick={() => deleteDestination()} type="button">
+              <Buttons type="submit">Salvar Alterações</Buttons>
+              <Buttons onClick={deleteDestination} type="button">
                 Deletar
               </Buttons>
             </WrapperButton>

@@ -9,11 +9,13 @@ export const Container = styled.div`
 `;
 
 export const TitleH1 = styled.h1`
-  font-size: 30px;
+  font-size: 40px;
   margin: 12px;
+  color: white;
 `;
 export const TitleH2 = styled.h2`
-  font-size: 13px;
+  font-size: 20px;
+  color: white;
 `;
 
 export const WrapperLogo = styled.div`

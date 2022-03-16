@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import LayoutAdmim from '../../../../components/Admim/LayoutAdmim';
 import Buttons from '../../../../components/Buttons';
-
 import Layout from '../../../../components/Layout';
-
+import apiProd from '../../../../lib/apiProd';
+import AlertMessage from '../../../../components/AlertMessage';
 import {
   WrapperForm,
   WrapperButton,
@@ -21,11 +21,18 @@ export default function AddVocation() {
     reset,
   } = useForm();
 
-  const addVocation = () => {
-    console.log('adicionado');
-
-    reset();
-    router.push('/administracao/ferias');
+  const addVocation = (data) => {
+    apiProd
+      .post('/packages', {
+        ...data,
+      })
+      .then(() => {
+        reset();
+        router.push('/administracao/ferias');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -43,15 +50,21 @@ export default function AddVocation() {
                   <h3>Local:</h3>
                   <input
                     type="text"
-                    {...register('name', { required: false })}
+                    {...register('name', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.name && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
                 <div>
                   <h3>Incluso:</h3>
                   <input
                     type="text"
-                    {...register('includedPackage', { required: false })}
+                    {...register('includedPackage', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.name && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
               </div>
             </Wrapper>
@@ -61,9 +74,12 @@ export default function AddVocation() {
               <div>
                 <textarea
                   rows="10"
-                  {...register('description', { required: false })}
+                  {...register('description', { required: true })}
                 />
               </div>
+              <AlertMessage>
+                {errors.description && 'Campo obrigatório'}
+              </AlertMessage>
             </Wrapper>
 
             <Wrapper>
@@ -73,15 +89,21 @@ export default function AddVocation() {
                   <h3>Quantas Noites:</h3>
                   <input
                     type="text"
-                    {...register('daysHosted', { required: false })}
+                    {...register('daysHosted', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.daysHosted && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
                 <div>
                   <h3>Quantas estrelas o hotel:</h3>
                   <input
                     type="text"
-                    {...register('hotelStars', { required: false })}
+                    {...register('hotelStars', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.hotelStars && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
               </div>
             </Wrapper>
@@ -93,15 +115,21 @@ export default function AddVocation() {
                   <h3>Quantidade de pessoas:</h3>
                   <input
                     type="text"
-                    {...register('amountPeople', { required: false })}
+                    {...register('amountPeople', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.amountPeople && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
                 <div>
                   <h3>Valor do pacote:</h3>
                   <input
                     type="text"
-                    {...register('price', { required: false })}
+                    {...register('price', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.price && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
               </div>
             </Wrapper>

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import LayoutAdmim from '../../../../components/Admim/LayoutAdmim';
 import Buttons from '../../../../components/Buttons';
 import apiProd from '../../../../lib/apiProd';
+import AlertMessage from '../../../../components/AlertMessage';
 
 import Layout from '../../../../components/Layout';
 
@@ -12,6 +13,7 @@ import {
   WrapperButton,
   Wrapper,
 } from '../../../../styles/admin-destinations/add/style';
+import ArrowBack from '../../../../components/ArrowBack';
 
 export default function AddDestination() {
   const router = useRouter();
@@ -43,6 +45,7 @@ export default function AddDestination() {
       </Head>
       <Layout subTitle="Adicione um Destino">
         <LayoutAdmim>
+          <ArrowBack />
           <WrapperForm onSubmit={handleSubmit(addDestination)}>
             <Wrapper>
               <h1>Informações</h1>
@@ -51,15 +54,21 @@ export default function AddDestination() {
                   <h3>Local:</h3>
                   <input
                     type="text"
-                    {...register('place', { required: false })}
+                    {...register('place', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.place && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
                 <div>
                   <h3>Valor por pessoas:</h3>
                   <input
                     type="text"
-                    {...register('unitaryValue', { required: false })}
+                    {...register('unitaryValue', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.unitaryValue && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
               </div>
             </Wrapper>
@@ -69,9 +78,12 @@ export default function AddDestination() {
               <div>
                 <textarea
                   rows="10"
-                  {...register('description', { required: false })}
+                  {...register('description', { required: true })}
                 />
               </div>
+              <AlertMessage>
+                {errors.description && 'Campo obrigatório'}
+              </AlertMessage>
             </Wrapper>
 
             <Wrapper>
@@ -81,15 +93,21 @@ export default function AddDestination() {
                   <h3>Dias:</h3>
                   <input
                     type="text"
-                    {...register('daysHosted', { required: false })}
+                    {...register('daysHosted', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.daysHosted && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
                 <div>
                   <h3>Incluso:</h3>
                   <input
                     type="text"
-                    {...register('includedPackage', { required: false })}
+                    {...register('includedPackage', { required: true })}
                   />
+                  <AlertMessage>
+                    {errors.includedPackage && 'Campo obrigatório'}
+                  </AlertMessage>
                 </div>
               </div>
             </Wrapper>
