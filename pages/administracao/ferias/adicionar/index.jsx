@@ -6,6 +6,7 @@ import Buttons from '../../../../components/Buttons';
 import Layout from '../../../../components/Layout';
 import apiProd from '../../../../lib/apiProd';
 import AlertMessage from '../../../../components/AlertMessage';
+import ArrowBack from '../../../../components/ArrowBack';
 import {
   WrapperForm,
   WrapperButton,
@@ -42,6 +43,10 @@ export default function AddVocation() {
       </Head>
       <Layout subTitle="Adicione um Pacote de Férias">
         <LayoutAdmim>
+          <ArrowBack
+            href="/administracao/ferias"
+            hrefA="/administracao/ferias"
+          />
           <WrapperForm onSubmit={handleSubmit(addVocation)}>
             <Wrapper>
               <h1>Informações</h1>

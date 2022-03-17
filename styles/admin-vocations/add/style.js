@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div``;
 
 export const WrapperForm = styled.form`
-  border: 1px solid #bdbdbd;
+  border: 1px solid var(--black);
   border-radius: 4px;
   box-shadow: 0px 3px 6px #2121214d;
   display: flex;
   flex-direction: column;
   padding: 20px;
-
+  background-color: rgba(255, 255, 255, 0.7);
   @media (min-width: 768px) {
     width: min-content;
     margin-left: 20px;
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
     font-size: 25px;
     margin-bottom: 32px;
     font-weight: 400;
-    color: var(--white);
+    color: var(--black);
   }
 
   > div {
@@ -35,9 +35,13 @@ export const Wrapper = styled.div`
     > textarea {
       font-size: 16px;
       padding: 15px 16px;
-      border: 1px solid var(--white);
+      border: 1px solid var(--black);
       border-radius: 4px;
-      width: 100%;
+      width: 250px;
+
+      @media (min-width: 768px) {
+        width: 100%;
+      }
     }
 
     > div {
@@ -45,13 +49,13 @@ export const Wrapper = styled.div`
       > h3 {
         font-size: 16px;
         margin-bottom: 8px;
-        color: var(--white);
+        color: var(--black);
       }
 
       > input {
         font-size: 16px;
         padding: 15px 16px;
-        border: 1px solid var(--white);
+        border: 1px solid var(--black);
         border-radius: 4px;
         min-width: 250px;
 

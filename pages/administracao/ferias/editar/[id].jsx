@@ -7,6 +7,7 @@ import Buttons from '../../../../components/Buttons';
 import apiProd from '../../../../lib/apiProd';
 import AlertMessage from '../../../../components/AlertMessage';
 import Layout from '../../../../components/Layout';
+import ArrowBack from '../../../../components/ArrowBack';
 
 import {
   WrapperForm,
@@ -62,6 +63,10 @@ export default function EditVocation() {
       </Head>
       <Layout subTitle="Edite ou Delete um Pacote">
         <LayoutAdmim>
+          <ArrowBack
+            href="/administracao/ferias"
+            hrefA="/administracao/ferias"
+          />
           <WrapperForm onSubmit={handleSubmit(editPackageVocation)}>
             <Wrapper>
               <h1>{`Informações do pacote ${packageVocation.name}`}</h1>
@@ -155,7 +160,7 @@ export default function EditVocation() {
             </Wrapper>
 
             <WrapperButton>
-              <Buttons type="submit">Adicionar</Buttons>
+              <Buttons type="submit">Salvar Alterações</Buttons>
               <Buttons onClick={deletePackageVocation} type="button">
                 Deletar
               </Buttons>

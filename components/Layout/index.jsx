@@ -1,6 +1,5 @@
 import Header from '../Header';
 import Footer from '../Footer';
-import NavBarMobile from '../NavBarMobile';
 
 import { Container, Cover, Wrapper } from './style';
 import MenuBurger from '../MenuBurger';
@@ -9,13 +8,13 @@ export default function Layout({ children, subTitle, dNone }) {
   return (
     <Container>
       <Cover>
-        <Wrapper>
+        <Wrapper className="margins">
           <MenuBurger />
           <Header dNone={dNone} subTitle={subTitle} />
           {children}
         </Wrapper>
       </Cover>
-      <Footer />
+      <Footer className="margins" />
     </Container>
   );
 }

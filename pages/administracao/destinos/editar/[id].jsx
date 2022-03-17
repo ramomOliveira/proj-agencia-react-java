@@ -7,7 +7,7 @@ import Buttons from '../../../../components/Buttons';
 import apiProd from '../../../../lib/apiProd';
 import AlertMessage from '../../../../components/AlertMessage';
 import Layout from '../../../../components/Layout';
-
+import ArrowBack from '../../../../components/ArrowBack';
 import {
   WrapperForm,
   WrapperButton,
@@ -68,6 +68,10 @@ export default function EditDestination() {
       </Head>
       <Layout subTitle="Edite ou Delete um Destino">
         <LayoutAdmim>
+          <ArrowBack
+            href="/administracao/destinos"
+            hrefA="/administracao/destinos"
+          />
           <WrapperForm onSubmit={handleSubmit(editDestination)}>
             <Wrapper>
               <h1>{`Informações destino ${destinations.place}`}</h1>

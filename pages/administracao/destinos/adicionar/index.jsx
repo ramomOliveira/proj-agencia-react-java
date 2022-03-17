@@ -45,7 +45,10 @@ export default function AddDestination() {
       </Head>
       <Layout subTitle="Adicione um Destino">
         <LayoutAdmim>
-          <ArrowBack />
+          <ArrowBack
+            href="/administracao/destinos"
+            hrefA="/administracao/destinos"
+          />
           <WrapperForm onSubmit={handleSubmit(addDestination)}>
             <Wrapper>
               <h1>Informações</h1>

@@ -5,7 +5,7 @@ import { styles, Container } from './style';
 
 export default function MenuBurger() {
   return (
-    <Container>
+    <Container className="margins">
       <Menu styles={styles}>
         <a href="/">
           <Link href="/">Home</Link>

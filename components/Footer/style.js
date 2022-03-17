@@ -45,9 +45,11 @@ export const Contact = styled.div`
       > textarea {
         border: 1px solid var(--white);
         height: 100%;
+        width: 300px;
 
         @media (max-width: 768px) {
           height: 100px;
+          width: 100%;
         }
       }
       > textarea::placeholder {
