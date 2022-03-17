@@ -3,9 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   background-color: #ffffffc4;
+  justify-content: space-between;
+
   @media (max-width: 768px) {
     align-items: center;
-    justify-content: space-between;
   }
 `;
 
