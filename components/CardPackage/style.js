@@ -10,6 +10,15 @@ export const Container = styled.div`
   }
 `;
 
+export const Img = styled.div`
+  background-image: ${(props) => `url(${props.imgUrl})`};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 235px;
+  height: 200px;
+`;
+
 export const TitleH1 = styled.h1`
   font-size: 53px;
   color: var(--blue);

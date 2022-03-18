@@ -5,27 +5,24 @@ import Layout from '../../components/Layout';
 import CardPackage from '../../components/CardPackage';
 import apiProd from '../../lib/apiProd';
 import { WrapperMain } from '../../styles/vacation/style';
-
-const arrayImg = [
-  '/images/vacation/img-ferias1.webp',
-  '/images/vacation/img-ferias2.webp',
-  '/images/vacation/img-ferias3.webp',
-  '/images/vacation/img-ferias4.webp',
-  '/images/vacation/img-ferias5.webp',
-  '/images/vacation/img-ferias6.webp',
-  '/images/vacation/img-ferias7.webp',
-  '/images/vacation/img-ferias8.webp',
-];
-
-const randomImg = Math.floor(Math.random() * arrayImg.length);
+import CardImgLoad from '../../components/CardImgLoad';
 
 export default function Vocation() {
+  const [imgLoad, setImgLoad] = useState(true);
   const [packages, setPackages] = useState([]);
 
   useEffect(() => {
-    apiProd.get('/packages').then((response) => {
-      setPackages(response.data);
-    });
+    apiProd
+      .get('/packages')
+      .then((response) => {
+        setPackages(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setImgLoad(false);
+      });
   }, []);
 
   return (
@@ -42,11 +39,11 @@ export default function Vocation() {
           srcIcon="images/icon-chinelo.webp"
           subTitle="Esplore. Sonhe. Descubra."
         />
-
+        {imgLoad && <CardImgLoad />}
         <WrapperMain>
           {packages.map((item) => (
             <CardPackage
-              src={arrayImg[randomImg]}
+              src="/images/imgNeutra.webp"
               price={item.price}
               city={item.name}
               title={`${item.daysHosted} noites, hotel ${item.hotelStars} estrelas, ${item.includedPackage}`}

@@ -6,6 +6,7 @@ import TransparentWhiteCard from '../../components/TransparentWhiteCard';
 import { BoxIcon } from '../../styles/home/style';
 import CardDestinations from '../../components/CardDestinations';
 import apiProd from '../../lib/apiProd';
+import CardImgLoad from '../../components/CardImgLoad';
 
 import {
   WrapperTips,
@@ -18,23 +19,22 @@ import {
   BorderBottom,
 } from '../../styles/destinations/style';
 
-const arrayImg = [
-  '/images/europa-card.webp',
-  '/images/africa-card.webp',
-  '/images/asia-card.webp',
-  '/images/australia-card.webp',
-  '/images/canada-card.webp',
-];
-
-const randomImg = Math.floor(Math.random() * arrayImg.length);
-
 export default function Destinations() {
+  const [imgLoad, setImgLoad] = useState(true);
   const [destination, setDestinations] = useState([]);
 
   useEffect(() => {
-    apiProd.get('/destinations').then((response) => {
-      setDestinations(response.data);
-    });
+    apiProd
+      .get('/destinations')
+      .then((response) => {
+        setDestinations(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setImgLoad(false);
+      });
   }, []);
   return (
     <>
@@ -62,11 +62,12 @@ export default function Destinations() {
 
         <WrapperMain>
           <AsideLeft>
+            {imgLoad && <CardImgLoad />}
             {destination.map((item) => (
               <CardDestinations
                 title={item.place}
                 description={item.description}
-                src={arrayImg[randomImg]}
+                src="/images/imgNeutra.webp"
               />
             ))}
           </AsideLeft>

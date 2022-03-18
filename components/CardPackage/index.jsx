@@ -1,9 +1,17 @@
-import { Container, TitleH2, TitleH1, TitleH3, WrapperContent } from './style';
+import {
+  Container,
+  TitleH2,
+  TitleH1,
+  TitleH3,
+  WrapperContent,
+  Img,
+} from './style';
 
 export default function CardPackage({ src, price, city, title }) {
   return (
     <Container>
-      <img src={src} alt="Imagem do Local" />
+      <Img imgUrl={src} />
+
       <WrapperContent>
         <TitleH1>R$ {price}</TitleH1>
         <TitleH2>{city}:</TitleH2>

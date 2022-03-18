@@ -1,4 +1,4 @@
-import { Container, WrapperDescription, CardImg } from './style';
+import { Container, WrapperDescription, CardImg, Img } from './style';
 
 export default function CardDestinations({ title, description, src }) {
   return (
@@ -9,7 +9,7 @@ export default function CardDestinations({ title, description, src }) {
       </WrapperDescription>
 
       <CardImg>
-        <img src={src} alt="Imagem Lugar" />
+        <Img imgUrl={src} />
       </CardImg>
     </Container>
   );

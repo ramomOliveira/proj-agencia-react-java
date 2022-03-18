@@ -30,3 +30,13 @@ export const WrapperDescription = styled.div`
 export const CardImg = styled.div`
   border: 8px solid var(--white);
 `;
+
+export const Img = styled.div`
+  background-image: ${(props) => `url(${props.imgUrl})`};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 235px;
+  min-height: 150px;
+  height: 100%;
+`;
